@@ -12,7 +12,7 @@ class Provider[T](Protocol):
         self._constructor_args = args
         self._constructor_kwargs = kwargs
 
-    def __call__(self, *args, **kwargs): ...
+    def __call__(self) -> T: ...
 
     def override(self, dependency: Self):
         self._instance_type = dependency._instance_type
