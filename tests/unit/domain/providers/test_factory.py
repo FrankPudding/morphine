@@ -1,7 +1,7 @@
 import pytest
 
 from morphine.domain.providers.factory import Factory
-from tests.unit.conftest import DummyService
+from tests.unit.conftest import DummyRepository, DummyService
 
 
 class TestFactory:
@@ -38,3 +38,14 @@ class TestFactory:
         # assert
         assert dummy_service.config_str == "new_str"
         assert dummy_service.config_int == -1
+
+    def test_accepts_providers_in_constructor(self, sut: Factory[DummyService]):
+        # arrange
+        repository_factory = Factory(DummyRepository)
+
+        # act
+        sut.override_dependencies(config_int=-1, config_str="new_str", repository=repository_factory)
+
+        # assert
+        assert isinstance(sut().repository, DummyRepository)
+
