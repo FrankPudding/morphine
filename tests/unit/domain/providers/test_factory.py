@@ -1,6 +1,6 @@
 import pytest
 
-from morphine.domain.providers.factory import Factory
+from morphine.providers.factory import Factory
 from tests.unit.conftest import DummyRepository, DummyService
 
 

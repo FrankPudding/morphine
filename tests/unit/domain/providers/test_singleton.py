@@ -1,6 +1,6 @@
 import pytest
 
-from morphine.domain.providers.singleton import Singleton
+from morphine.providers.singleton import Singleton
 from tests.unit.conftest import DummyRepository, DummyService
 
 

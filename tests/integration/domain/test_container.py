@@ -2,8 +2,8 @@ from typing import Protocol
 
 import pytest
 
-from morphine import Container
-from morphine.domain.providers.factory import Factory
+from morphine.container import Container
+from morphine.providers.factory import Factory
 
 
 class DummyRepository(Protocol):

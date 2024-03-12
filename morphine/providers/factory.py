@@ -1,22 +1,17 @@
-from typing import Optional
-
-from morphine import Provider
+from morphine.provider import Provider
 
 
-class Singleton[T](Provider):
-    """Provides the same instance on each call."""
-    _instance: Optional[T] = None
+class Factory[T](Provider):
+    """Provides a new instance with each call."""
 
     def __call__(self) -> T:
-        if self._instance is not None:
-            return self._instance
         evaluated_kwargs = {}
         for key, value in self._constructor_kwargs.items():
             if isinstance(value, Provider):
                 evaluated_kwargs[key] = value()
                 continue
             evaluated_kwargs[key] = value
-        self._instance = self._instance_type(
+        return self._instance_type(
             *tuple(
                 arg() if isinstance(arg, Provider) else arg
                 for arg in self._constructor_args
@@ -26,7 +21,3 @@ class Singleton[T](Provider):
                 for key, value in self._constructor_kwargs.items()
             },
         )
-        return self._instance
-
-    def reset(self) -> None:
-        self._instance = None
