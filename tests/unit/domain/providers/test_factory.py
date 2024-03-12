@@ -1,6 +1,6 @@
 import pytest
 
-from morphine.domain.dependencies.factory import Factory
+from morphine.domain.providers.factory import Factory
 
 
 class JunkService:

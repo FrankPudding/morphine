@@ -3,7 +3,7 @@ from typing import Protocol
 import pytest
 
 from morphine import Container
-from morphine.domain.dependencies.factory import Factory
+from morphine.domain.providers.factory import Factory
 
 
 class JunkRepository(Protocol):
