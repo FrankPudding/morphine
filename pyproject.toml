@@ -1,0 +1,25 @@
+[project]
+license = {file = 'LICENSE'}
+
+[tool.poetry]
+name = "morphine"
+version = "0.1.0"
+description = "Dependency Injection Framework for Python"
+authors = ["Rory Wagstaff"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+black = "^24.1.1"
+
+
+[tool.poetry.group.tests.dependencies]
+pytest = "^8.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
